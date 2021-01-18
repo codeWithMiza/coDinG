@@ -1,0 +1,43 @@
+{% extends 'basic.html' %}
+{% block title %}
+Blog | coDinG
+{% endblock %}
+{% block body %}
+<div class="container my-5">
+	<div class="row">
+    <div class="col-md-8 blog-main">
+        <h2>Coding Articles by coDinG</h2>
+
+         {% for post in allPosts  %}
+         <div class="row  border rounded overflow-hidden my-4">
+          <div class="col p-4 ">
+            <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}} </strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-muted">{{post.datetime}}</div>
+            <p class="card-text mb-auto">{{post.content|safe|truncatechars:200}}</p>
+            <div class="my-2">
+            	<a href="/{{post.slug}}/" role="button" class="btn btn-primary">Continue reading</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}  
+    
+    </div>
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">Related Blog</h4>
+      </div>
+
+      <div id="content-box">
+        <ul class=" mb-0">
+          {% for blog in allblog  %}
+          <li class="py-2" style="font-size:1.5em;"><a href="/{{blog.slug}}/"> {{blog.id}} {{blog.title|truncatechars:30}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</div>
+{% endblock %}

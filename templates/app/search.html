@@ -1,0 +1,33 @@
+{% extends 'basic.html' %}
+
+{% block title %} Search Results | coDinG {% endblock title %}
+
+
+
+{% block body %}
+<div class="container my-3">
+    <h2 class="">Search results : </h2>
+    {% if allPosts|length < 1 %}
+   <h4> <p>No search results</p>
+      Your search query : <b>{{query}}</b> did not match any documents. <br>
+    Suggestions: 
+    <ul>
+    <li>Make sure that all words are spelled correctly.</li>
+    <li>Try more general keywords.</li>
+   <li> Try fewer keywords.</li>
+   <li> Try different keywords.</li>
+    </ul>
+    
+    {% endif %}
+    <br><br>
+    About {{ allPosts|length }}  results (0.59 seconds) </h4>
+
+    {% for post in allPosts  %}
+    <div class="row ">
+      <div class="col p-4">
+        <h3 class="mb-0"><a href="/{{post.slug}}">{{post.title}}</a></h3>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+ {% endblock %}
