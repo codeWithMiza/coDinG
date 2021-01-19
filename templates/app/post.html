@@ -20,7 +20,22 @@ Blog | coDinG
             </div>
           </div>
         </div>
-        {% endfor %}  
+        {% endfor %} 
+        <div class="clearfix">
+          {% if prev %}
+       <a href="/blog?page={{prev}}" class="btn btn-danger left "><i class="bi bi-arrow-left"></i> Previous </a>
+        {% else %}
+        <a class="btn btn-danger left" href="#" >Previous</a>
+        {% endif %}
+
+        {% if nxt %}
+        <a href="/blog?page={{nxt}}" class="btn btn-danger right "><span>  Next  </span> <i class="bi bi-arrow-right"></i></a>
+        {% else %}
+        <a class="btn btn-danger right" href="#" >Next</a>
+        {% endif %}
+          
+         
+        </div>
     
     </div>
 

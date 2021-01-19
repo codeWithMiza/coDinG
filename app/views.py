@@ -9,7 +9,7 @@ import math
 
 
 def bloghome(request):
-    no_of_posts = 2
+    no_of_posts = 10
     #if request.GET("pageno")
     page = request.GET.get('page')
     if page is None:
@@ -35,7 +35,7 @@ def bloghome(request):
 
 def search(request):
     query = request.GET['query']
-    if len(query) > 78:
+    if len(query) > 78 or len(query) <3:
         allPosts = Post.objects.none()
     else:
         allPostsTitle = Post.objects.filter(title__icontains=query)
